@@ -3,7 +3,10 @@
     "target": "ES2018",
     "module": "commonjs",
     "lib": [
-      "es2018"
+      "es2018",
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
     "declaration": true,
     "strict": true,
@@ -26,6 +29,7 @@
   },
   "exclude": [
     "node_modules",
-    "cdk.out"
+    "cdk.out",
+    "frontend"
   ]
 }

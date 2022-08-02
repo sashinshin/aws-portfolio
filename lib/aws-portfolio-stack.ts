@@ -17,7 +17,8 @@ export class AwsPortfolioStack extends Stack {
         commands: [
           'npm ci',
           'cd frontend && npm install && npm run build',
-          'cd .. && npm run build && npx cdk synth',],
+          'cd .. && npm run build && npx cdk synth',
+        ],
       }),
     });
 
