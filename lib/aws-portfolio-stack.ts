@@ -1,6 +1,7 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
+import { addStaticPageBucket } from './s3resources';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class AwsPortfolioStack extends Stack {
@@ -9,9 +10,6 @@ export class AwsPortfolioStack extends Stack {
 
     new CodePipeline(this, 'PortfolioPipeline', {
       pipelineName: 'PortfolioPipeline',
-      dockerEnabledForSynth: true,
-      selfMutation: true,
-      dockerEnabledForSelfMutation: true,
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('sashinshin/cdk-salt-demo', 'main'), // Remember to change the name of this
         commands: ['npm ci',
@@ -19,6 +17,8 @@ export class AwsPortfolioStack extends Stack {
           'npx cdk synth'],
       }),
     });
+
+    addStaticPageBucket(this);
     // example resource
     // const queue = new sqs.Queue(this, 'AwsPortfolioQueue', {
     //   visibilityTimeout: cdk.Duration.seconds(300)
