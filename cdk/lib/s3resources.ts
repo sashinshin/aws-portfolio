@@ -19,7 +19,7 @@ export const addStaticPageBucket = (stack: Construct): s3.Bucket => {
         ]
     });
     new s3Deploy.BucketDeployment(stack, "StaticPageS3Deploy", {
-        sources: [s3Deploy.Source.asset(join(__dirname, "../frontend/build"))],
+        sources: [s3Deploy.Source.asset(join(__dirname, "../../build"))],
         destinationBucket: staticPageS3,
     });
 

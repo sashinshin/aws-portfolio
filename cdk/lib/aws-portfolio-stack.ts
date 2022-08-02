@@ -16,8 +16,8 @@ export class AwsPortfolioStack extends Stack {
         input: CodePipelineSource.gitHub('sashinshin/aws-portfolio', 'main'),
         commands: [
           'npm ci',
-          'cd frontend && npm install && npm run build',
-          'cd .. && npm run build && npx cdk synth',
+          'npm run build',
+          'npx cdk synth',
         ],
       }),
     });
