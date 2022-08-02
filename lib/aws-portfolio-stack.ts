@@ -15,7 +15,7 @@ export class AwsPortfolioStack extends Stack {
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('sashinshin/aws-portfolio', 'main'),
         commands: [
-          'cd frontend && npm ci',
+          'cd frontend && npm ci && npm run build',
           'npm ci',
           'npm run build',
           'npx cdk synth'],
