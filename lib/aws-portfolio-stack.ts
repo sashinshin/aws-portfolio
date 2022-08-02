@@ -13,7 +13,8 @@ export class AwsPortfolioStack extends Stack {
       dockerEnabledForSynth: true,
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('sashinshin/aws-portfolio', 'main'),
-        commands: ['npm ci',
+        commands: [
+          'npm ci',
           'npm run build',
           'npx cdk synth'],
       }),
