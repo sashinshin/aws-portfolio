@@ -10,8 +10,9 @@ export class AwsPortfolioStack extends Stack {
 
     new CodePipeline(this, 'PortfolioPipeline', {
       pipelineName: 'PortfolioPipeline',
+      dockerEnabledForSynth: true,
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('sashinshin/cdk-salt-demo', 'main'), // Remember to change the name of this
+        input: CodePipelineSource.gitHub('sashinshin/aws-portfolio', 'main'),
         commands: ['npm ci',
           'npm run build',
           'npx cdk synth'],
